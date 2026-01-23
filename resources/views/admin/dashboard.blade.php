@@ -22,11 +22,20 @@
 </nav>
 
 <div class="container mt-4">
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-12">
-            <h1 class="mb-4">System Administrator Dashboard</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h5>Administravimo meniu</h5>
+                    <div class="btn-group" role="group">
+                        <a href="{{ route('admin.conferences') }}" class="btn btn-primary">Konferencijų valdymas</a>
+                        <a href="{{ route('admin.users') }}" class="btn btn-info">Naudotojų valdymas</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 
     <!-- Stats Cards -->
     <div class="row mb-4">

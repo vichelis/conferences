@@ -106,12 +106,40 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center mt-16 px-0">
-                    <div class="text-center text-sm text-gray-500 dark:text-gray-400">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </div>
-                </div>
-            </div>
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="flex justify-center mt-16 px-6">
+                                <div class="text-center">
+
+                                    <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md">
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Studento informacija</h3>
+                                        <div class="space-y-2 text-gray-600 dark:text-gray-400">
+                                            <p><strong>Darbą atliko</strong> Arnas Nagys</p>
+                                            <p><strong>Grupė:</strong> PIT-22-I-NT</p>
+                                        </div>
+
+                                        <div class="mt-6 space-y-2">
+                                            <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Sistemos vaidmenys</h4>
+                                            <div class="space-y-2">
+                                                <a href="{{ route('conferences.index') }}"
+                                                   class="block w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors">
+                                                    👤Kliento posistemė
+                                                </a>
+                                                <a href="{{ url('/employee') }}"
+                                                   class="block w-full px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded transition-colors">
+                                                    👨‍💼Darbuotojo posistemė
+                                                </a>
+                                                <a href="{{ route('admin.dashboard') }}"
+                                                   class="block w-full px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded transition-colors">
+                                                    ⚙️Administratoriaus posistemė
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
         </div>
 </body>
 </html>

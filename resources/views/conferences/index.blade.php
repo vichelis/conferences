@@ -22,10 +22,10 @@
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-12 d-flex justify-content-between align-items-center">
+<div class="container mt-4">
+    <div class="row">
+     <div class="col-12">
         <h1 class="mb-4">Konferencijų sąrašas</h1>
-        <a href="{{ route('conferences.create') }}" class="btn btn-success">Sukurti konferenciją</a>
     </div>
 </div>
 
@@ -43,15 +43,8 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary btn-sm">Registruotis</button>
-                        <a href="{{ route('conferences.show', $conference['id']) }}" class="btn btn-outline-secondary btn-sm">Daugiau info</a>
-                        <a href="{{ route('conferences.edit', $conference['id']) }}" class="btn btn-warning btn-sm">Redaguoti</a>
-                        <form action="{{ route('conferences.destroy', $conference['id']) }}" method="POST" class="d-inline"
-                              onsubmit="return confirm('Ar tikrai norite ištrinti šią konferenciją?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Ištrinti</button>
-                        </form>
+                        <a href="{{ route('conferences.show', $conference['id']) }}" class="btn btn-primary btn-sm">Peržiūrėti</a>
+                        <button class="btn btn-success btn-sm">Registruotis</button>
                     </div>
                 </div>
             </div>
