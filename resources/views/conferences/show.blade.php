@@ -67,11 +67,28 @@
                         <p class="card-text">{{ $conference['description'] }}</p>
 
                         <h5 class="mt-4">Pranešėjai</h5>
-                        <ul class="list-group list-group-flush">
-                            @foreach($conference['speakers'] as $speaker)
-                                <li class="list-group-item">{{ $speaker }}</li>
-                            @endforeach
-                        </ul>
+                        @if($conference->speakers->count() > 0)
+                            <ul class="list-group list-group-flush">
+                                @foreach($conference->speakers as $speaker)
+                                    <li class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-1">{{ $speaker->name }}</h6>
+                                                @if($speaker->title)
+                                                    <p class="mb-1 text-muted">{{ $speaker->title }}</p>
+                                                @endif
+                                                @if($speaker->bio)
+                                                    <small class="text-muted">{{ $speaker->bio }}</small>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <p class="text-muted">Pranešėjų informacija bus paskelbta vėliau.</p>
+                        @endif
+                        
                     </div>
                 </div>
             </div>

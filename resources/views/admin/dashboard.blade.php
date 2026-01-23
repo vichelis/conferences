@@ -119,7 +119,6 @@
                                 <th>Vardas</th>
                                 <th>Email</th>
                                 <th>Sukurta</th>
-                                <th>Veiksmai</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -129,10 +128,6 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at->format('M d, Y') }}</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">Redaguoti</button>
-                                        <button class="btn btn-sm btn-warning">Ištrinti</button>
-                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
