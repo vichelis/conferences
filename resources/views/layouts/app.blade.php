@@ -45,6 +45,33 @@
             transition: all 0.3s ease;
         }
 
+        .navbar .btn-outline-light {
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .btn-light {
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+        }
+
+        .navbar .btn-light:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-1px);
+        }
+
+        .navbar .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+
         .navbar .btn-logout:disabled {
             background: rgba(108, 117, 125, 0.5);
             border-color: rgba(108, 117, 125, 0.3);
@@ -103,22 +130,47 @@
             </ul>
 
             <div class="navbar-nav ms-auto d-flex align-items-center">
-                <div class="user-info text-white me-3">
-                    <i class="fas fa-user me-1"></i>
-                    <span>{{ $userName ?? 'Arnas Nagys' }}</span>
-                </div>
+                <!-- User Info -->
+                @auth
+                    <div class="user-info text-white me-3">
+                        <i class="fas fa-user me-1"></i>
+                        <span>{{ Auth::user()->name }}</span>
+                    </div>
 
-                @if(isset($showTime) && $showTime)
-                    <div id="time-output" class="text-white me-3 user-info"></div>
-                @endif
+                    <!-- Time Display (if needed) -->
+                    @if(isset($showTime) && $showTime)
+                        <div id="time-output" class="text-white me-3 user-info"></div>
+                    @endif
 
-                <button class="btn btn-logout" disabled title="Autentifikacija dar nėra sukurta">
-                    <i class="fas fa-sign-out-alt me-1"></i>
-                    Atsijungti
-                </button>
+                    <!-- Logout Button -->
+                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-logout">
+                            <i class="fas fa-sign-out-alt me-1"></i>
+                            Atsijungti
+                        </button>
+                    </form>
+
+                    <a class="nav-link me-3" href="{{ route('profile') }}">Profilis</a>
+                @else
+                    <div class="user-info text-white me-3">
+                        <i class="fas fa-user me-1"></i>
+                        <span>Svečias</span>
+                    </div>
+
+                    <!-- Time Display (if needed) -->
+                    @if(isset($showTime) && $showTime)
+                        <div id="time-output" class="text-white me-3 user-info"></div>
+                    @endif
+
+                    <!-- Login/Register Buttons -->
+                    <a href="{{ route('login') }}" class="btn btn-outline-light btn-sm me-2">Prisijungti</a>
+                    <a href="{{ route('register') }}" class="btn btn-light btn-sm">Registruotis</a>
+                @endauth
 
                 @yield('navbar-extra')
             </div>
+
         </div>
     </div>
 </nav>

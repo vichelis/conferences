@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 
 
@@ -54,3 +56,17 @@ Route::delete('/admin/conferences/{id}', [AdminController::class, 'destroyConfer
 Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
 Route::get('/admin/users/{id}/edit', [AdminController::class, 'editUser'])->name('admin.users.edit');
 Route::put('/admin/users/{id}', [AdminController::class, 'updateUser'])->name('admin.users.update');
+
+// Authentication Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+    Route::get('/profile', [RegisterController::class, 'profile'])->name('profile');
+    Route::put('/profile', [RegisterController::class, 'updateProfile'])->name('profile.update');
+});
