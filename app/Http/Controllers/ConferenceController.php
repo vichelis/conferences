@@ -84,4 +84,79 @@ class ConferenceController extends Controller
         return view('conferences.show', compact('conference'));
     }
 
+    public function create()
+    {
+        return view('conferences.create');
+    }
+
+    public function store(Request $request)
+    {
+        // Validation
+        $request->validate([
+            'title' => 'required|max:255',
+            'date' => 'required|date',
+            'time' => 'required',
+            'location' => 'required',
+            'address' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'capacity' => 'required|integer'
+        ]);
+
+        // Here you would save to database
+        // For now, just redirect with success message
+        return redirect()->route('conferences.index')->with('success', 'Konferencija sėkmingai sukurta!');
+    }
+
+    public function edit($id)
+    {
+        // Sample data - replace with database lookup
+        $conferences = [
+            1 => [
+                'id' => 1,
+                'title' => 'Tech Conference 2024',
+                'date' => '2024-03-15',
+                'time' => '09:00 - 17:00',
+                'location' => 'Vilnius, Lithuania',
+                'address' => 'Gedimino pr. 9, Vilnius',
+                'description' => 'Annual technology conference featuring latest innovations.',
+                'price' => '€50',
+                'capacity' => 200
+            ]
+        ];
+
+        $conference = $conferences[$id] ?? null;
+
+        if (!$conference) {
+            abort(404);
+        }
+
+        return view('conferences.edit', compact('conference'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validation
+        $request->validate([
+            'title' => 'required|max:255',
+            'date' => 'required|date',
+            'time' => 'required',
+            'location' => 'required',
+            'address' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'capacity' => 'required|integer'
+        ]);
+
+        // Here you would update in database
+        return redirect()->route('conferences.show', $id)->with('success', 'Konferencija sėkmingai atnaujinta!');
+    }
+
+    public function destroy($id)
+    {
+        // Here you would delete from database
+        return redirect()->route('conferences.index')->with('success', 'Konferencija sėkmingai ištrinta!');
+    }
+
+
 }
