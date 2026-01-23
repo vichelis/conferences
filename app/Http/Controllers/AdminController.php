@@ -1,5 +1,4 @@
 <?php
-// conferences/app/Http/Controllers/AdminController.php
 
 namespace App\Http\Controllers;
 
@@ -109,7 +108,6 @@ class AdminController extends Controller
         return redirect()->route('admin.conferences')->with('success', 'Konferencija ištrinta!');
     }
 
-    // User Management (keep existing methods)
     public function users()
     {
         $users = User::all();

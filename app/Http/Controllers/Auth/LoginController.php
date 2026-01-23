@@ -1,5 +1,4 @@
 <?php
-// conferences/app/Http/Controllers/Auth/LoginController.php
 
 namespace App\Http\Controllers\Auth;
 

@@ -1,5 +1,4 @@
 <?php
-// conferences/app/Models/User.php
 
 namespace App\Models;
 
@@ -8,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable // Remove "implements MustVerifyEmail"
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -36,19 +35,16 @@ class User extends Authenticatable // Remove "implements MustVerifyEmail"
         'password' => 'hashed',
     ];
 
-    // Relationships
     public function conferenceRegistrations()
     {
         return $this->hasMany(ConferenceRegistration::class, 'email', 'email');
     }
 
-    // Scopes
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
     }
 
-    // Accessors
     public function getAgeAttribute()
     {
         return $this->birth_date ? $this->birth_date->age : null;

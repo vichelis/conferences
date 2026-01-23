@@ -1,4 +1,3 @@
-<!-- conferences/resources/views/auth/register.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'Registracija')
@@ -90,7 +89,6 @@
                         <p class="text-muted">Užsiregistruokite ir dalyvaukite konferencijose</p>
                     </div>
 
-                    <!-- Step Indicator -->
                     <div class="step-indicator">
                         <div class="step active">1</div>
                         <div class="step inactive">2</div>
@@ -99,7 +97,6 @@
                     <form method="POST" action="{{ route('register') }}" id="registrationForm">
                         @csrf
 
-                        <!-- Step 1: Basic Information -->
                         <div class="step-content" id="step1">
                             <h4 class="mb-4">Pagrindinė informacija</h4>
 
@@ -177,7 +174,6 @@
                             </div>
                         </div>
 
-                        <!-- Step 2: Additional Information -->
                         <div class="step-content d-none" id="step2">
                             <h4 class="mb-4">Papildoma informacija</h4>
 
@@ -267,7 +263,6 @@
 @push('scripts')
     <script>
         function nextStep() {
-            // Validate step 1 fields
             const requiredFields = ['name', 'email', 'password', 'password_confirmation'];
             let isValid = true;
 
@@ -281,7 +276,6 @@
                 }
             });
 
-            // Check password confirmation
             const password = document.getElementById('password').value;
             const passwordConfirmation = document.getElementById('password_confirmation').value;
 
@@ -294,7 +288,6 @@
                 document.getElementById('step1').classList.add('d-none');
                 document.getElementById('step2').classList.remove('d-none');
 
-                // Update step indicator
                 document.querySelector('.step.active').classList.remove('active');
                 document.querySelector('.step.active').classList.add('inactive');
                 document.querySelectorAll('.step')[1].classList.add('active');
@@ -306,14 +299,13 @@
             document.getElementById('step2').classList.add('d-none');
             document.getElementById('step1').classList.remove('d-none');
 
-            // Update step indicator
+
             document.querySelector('.step.active').classList.remove('active');
             document.querySelector('.step.active').classList.add('inactive');
             document.querySelectorAll('.step')[0].classList.add('active');
             document.querySelectorAll('.step')[0].classList.remove('inactive');
         }
 
-        // Real-time password confirmation validation
         document.getElementById('password_confirmation').addEventListener('input', function() {
             const password = document.getElementById('password').value;
             const confirmation = this.value;

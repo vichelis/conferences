@@ -40,7 +40,6 @@ class Conference extends Model
         return $this->hasMany(ConferenceRegistration::class)->where('status', 'confirmed');
     }
 
-    // Scopes
     public function scopePublished($query)
     {
         return $query->where('status', 'published');
@@ -56,7 +55,6 @@ class Conference extends Model
         return $query->where('subsystem_id', $subsystemId);
     }
 
-    // Accessors
     public function getAvailableSpotsAttribute()
     {
         return $this->capacity - $this->confirmedRegistrations()->count();

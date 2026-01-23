@@ -1,4 +1,3 @@
-<!-- conferences/resources/views/auth/login.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'Prisijungimas')

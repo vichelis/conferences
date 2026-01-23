@@ -52,7 +52,6 @@ class RegisterController extends Controller
             'is_active' => true
         ]);
 
-        // Manually set email as verified (since we're not using email verification)
         $user->email_verified_at = now();
         $user->save();
 
@@ -65,13 +64,18 @@ class RegisterController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        $registrations = $user->conferenceRegistrations()
-            ->with('conference.subsystem')
-            ->latest()
-            ->get();
 
-        return view('auth.profile', compact('user', 'registrations'));
+        $registrationCount = 0;
+        try {
+            $registrationCount = \App\Models\ConferenceRegistration::where('email', $user->email)->count();
+        } catch (\Exception $e) {
+            $registrationCount = 0;
+        }
+
+        return view('auth.profile', compact('user', 'registrationCount'));
     }
+
+
 
     public function updateProfile(Request $request)
     {

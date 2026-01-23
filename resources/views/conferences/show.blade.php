@@ -88,7 +88,7 @@
                         @else
                             <p class="text-muted">Pranešėjų informacija bus paskelbta vėliau.</p>
                         @endif
-                        
+
                     </div>
                 </div>
             </div>

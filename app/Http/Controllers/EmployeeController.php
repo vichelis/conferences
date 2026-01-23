@@ -1,5 +1,4 @@
 <?php
-// conferences/app/Http/Controllers/EmployeeController.php
 
 namespace App\Http\Controllers;
 

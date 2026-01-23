@@ -123,19 +123,16 @@
             </ul>
 
             <div class="navbar-nav ms-auto d-flex align-items-center">
-                <!-- User Info -->
                 @auth
                     <div class="user-info text-white me-3">
                         <i class="fas fa-user me-1"></i>
                         <span>{{ Auth::user()->name }}</span>
                     </div>
 
-                    <!-- Time Display (if needed) -->
                     @if(isset($showTime) && $showTime)
                         <div id="time-output" class="text-white me-3 user-info"></div>
                     @endif
 
-                    <!-- Logout Button -->
                     <form method="POST" action="{{ route('logout') }}" class="d-inline">
                         @csrf
                         <button type="submit" class="btn btn-logout">
@@ -151,12 +148,10 @@
                         <span>Svečias</span>
                     </div>
 
-                    <!-- Time Display (if needed) -->
                     @if(isset($showTime) && $showTime)
                         <div id="time-output" class="text-white me-3 user-info"></div>
                     @endif
 
-                    <!-- Login/Register Buttons -->
                     <a href="{{ route('login') }}" class="btn btn-outline-light btn-sm me-2">Prisijungti</a>
                     <a href="{{ route('register') }}" class="btn btn-light btn-sm">Registruotis</a>
                 @endauth
