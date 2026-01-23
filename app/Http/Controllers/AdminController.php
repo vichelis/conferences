@@ -15,22 +15,21 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('totalUsers', 'recentUsers'));
     }
 
-    // Conference Management
     public function conferences()
     {
-        // Sample data - replace with database later
+
         $conferences = [
             1 => [
                 'id' => 1,
-                'title' => 'Tech Conference 2024',
-                'date' => '2024-03-15',
+                'title' => 'Tech Conference 2026',
+                'date' => '2026-03-15',
                 'location' => 'Vilnius, Lithuania',
                 'description' => 'Annual technology conference'
             ],
             2 => [
                 'id' => 2,
                 'title' => 'Business Summit',
-                'date' => '2024-04-20',
+                'date' => '2026-04-20',
                 'location' => 'Kaunas, Lithuania',
                 'description' => 'Business professionals meeting'
             ]
@@ -53,17 +52,16 @@ class AdminController extends Controller
             'description' => 'required'
         ]);
 
-        // Database save logic here later
         return redirect()->route('admin.conferences')->with('success', 'Konferencija sėkmingai sukurta!');
     }
 
     public function editConference($id)
     {
-        // Sample data - replace with database lookup
+
         $conference = [
             'id' => $id,
-            'title' => 'Tech Conference 2024',
-            'date' => '2024-03-15',
+            'title' => 'Tech Conference 2026',
+            'date' => '2026-03-15',
             'location' => 'Vilnius, Lithuania',
             'description' => 'Annual technology conference'
         ];
@@ -80,17 +78,17 @@ class AdminController extends Controller
             'description' => 'required'
         ]);
 
-        // Database update logic here later
+
         return redirect()->route('admin.conferences')->with('success', 'Konferencija atnaujinta!');
     }
 
     public function destroyConference($id)
     {
-        // Database delete logic here later
+
         return redirect()->route('admin.conferences')->with('success', 'Konferencija ištrinta!');
     }
 
-    // User Management
+
     public function users()
     {
         $users = User::all();
@@ -116,6 +114,6 @@ class AdminController extends Controller
             'email' => $request->email
         ]);
 
-        return redirect()->route('admin.users')->with('success', 'Naudotojas atnaujintas!');
+        return redirect()->route('admin.users')->with('success', 'Vartotojas atnaujintas!');
     }
 }

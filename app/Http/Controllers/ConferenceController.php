@@ -13,7 +13,6 @@ class ConferenceController extends Controller
             'email' => 'required|email'
         ]);
 
-        // Here you would save registration to database
         return redirect()->route('conferences.show', $id)->with('success', 'Sėkmingai užsiregistravote į konferenciją!');
     }
 
@@ -22,22 +21,22 @@ class ConferenceController extends Controller
         $conferences = [
             [
                 'id' => 1,
-                'title' => 'Tech Conference 2024',
-                'date' => '2024-03-15',
+                'title' => 'Tech Conference 2026',
+                'date' => '2026-03-15',
                 'location' => 'Vilnius, Lithuania',
                 'description' => 'Annual technology conference featuring latest innovations.'
             ],
             [
                 'id' => 2,
                 'title' => 'Business Summit',
-                'date' => '2024-04-20',
+                'date' => '2026-04-20',
                 'location' => 'Kaunas, Lithuania',
                 'description' => 'Leading business professionals sharing insights.'
             ],
             [
                 'id' => 3,
                 'title' => 'Digital Marketing Expo',
-                'date' => '2024-05-10',
+                'date' => '2026-05-10',
                 'location' => 'Klaipėda, Lithuania',
                 'description' => 'Explore the future of digital marketing strategies.'
             ]
@@ -51,8 +50,8 @@ class ConferenceController extends Controller
         $conferences = [
             1 => [
                 'id' => 1,
-                'title' => 'Tech Conference 2024',
-                'date' => '2024-03-15',
+                'title' => 'Tech Conference 2026',
+                'date' => '2026-03-15',
                 'time' => '09:00 - 17:00',
                 'location' => 'Vilnius, Lithuania',
                 'address' => 'Gedimino pr. 9, Vilnius',
@@ -64,7 +63,7 @@ class ConferenceController extends Controller
             2 => [
                 'id' => 2,
                 'title' => 'Business Summit',
-                'date' => '2024-04-20',
+                'date' => '2026-04-20',
                 'time' => '10:00 - 16:00',
                 'location' => 'Kaunas, Lithuania',
                 'address' => 'Laisvės al. 53, Kaunas',
@@ -76,7 +75,7 @@ class ConferenceController extends Controller
             3 => [
                 'id' => 3,
                 'title' => 'Digital Marketing Expo',
-                'date' => '2024-05-10',
+                'date' => '2026-05-10',
                 'time' => '09:30 - 18:00',
                 'location' => 'Klaipėda, Lithuania',
                 'address' => 'Tiltų g. 1, Klaipėda',
@@ -98,12 +97,11 @@ class ConferenceController extends Controller
 
     public function edit($id)
     {
-        // Sample data - replace with database lookup
         $conferences = [
             1 => [
                 'id' => 1,
-                'title' => 'Tech Conference 2024',
-                'date' => '2024-03-15',
+                'title' => 'Tech Conference 2026',
+                'date' => '2026-03-15',
                 'time' => '09:00 - 17:00',
                 'location' => 'Vilnius, Lithuania',
                 'address' => 'Gedimino pr. 9, Vilnius',
