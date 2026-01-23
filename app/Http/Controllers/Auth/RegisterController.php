@@ -1,10 +1,10 @@
 <?php
+// conferences/app/Http/Controllers/Auth/RegisterController.php
 
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,17 +12,11 @@ use Illuminate\Validation\Rules;
 
 class RegisterController extends Controller
 {
-    /**
-     * Display the registration form.
-     */
     public function create()
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle an incoming registration request.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -58,12 +52,14 @@ class RegisterController extends Controller
             'is_active' => true
         ]);
 
-        event(new Registered($user));
+        // Manually set email as verified (since we're not using email verification)
+        $user->email_verified_at = now();
+        $user->save();
 
         Auth::login($user);
 
         return redirect()->route('conferences.index')
-            ->with('success', 'Sveikiname! Jūsų paskyra sėkmingai sukurta. Patvirtinimo laiškas išsiųstas į jūsų el. paštą.');
+            ->with('success', 'Sveikiname! Jūsų paskyra sėkmingai sukurta.');
     }
 
     public function profile()
@@ -88,7 +84,6 @@ class RegisterController extends Controller
             'birth_date' => ['nullable', 'date', 'before:today'],
             'gender' => ['nullable', 'in:male,female,other'],
             'city' => ['nullable', 'string', 'max:255'],
-            'bio' => ['nullable', 'string', 'max:1000'],
         ]);
 
         $user->update($request->only([

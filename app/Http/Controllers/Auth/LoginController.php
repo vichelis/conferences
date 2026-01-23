@@ -10,17 +10,11 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    /**
-     * Display the login form.
-     */
     public function create()
     {
         return view('auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -44,9 +38,6 @@ class LoginController extends Controller
             ->with('success', 'Sėkmingai prisijungėte!');
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
@@ -54,7 +45,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('welcome')
+        return redirect()->route('conferences.index')
             ->with('success', 'Sėkmingai atsijungėte!');
     }
 }

@@ -8,26 +8,15 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 Route::get('/conferences', [ConferenceController::class, 'index'])->name('conferences.index');
 Route::get('/conferences/{id}', [ConferenceController::class, 'show'])->name('conferences.show');
 Route::post('/conferences/{id}/register', [ConferenceController::class, 'register'])->name('conferences.register');
 
-// Employee routes
+//employee routes
 Route::prefix('employee')->name('employee.')->group(function () {
     Route::get('/', [EmployeeController::class, 'index'])->name('dashboard');
     Route::get('/conferences', [EmployeeController::class, 'conferences'])->name('conferences');
@@ -35,7 +24,7 @@ Route::prefix('employee')->name('employee.')->group(function () {
     Route::get('/conferences/{id}/registrations', [EmployeeController::class, 'registrations'])->name('conferences.registrations');
 });
 
-// Admin routes
+//Admin routes
 Route::prefix('admin')->name('admin.')->group(function () {
 
 });

@@ -221,20 +221,6 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="bio" class="form-label">Trumpas aprašymas</label>
-                                    <textarea class="form-control @error('bio') is-invalid @enderror"
-                                              id="bio"
-                                              name="bio"
-                                              rows="3"
-                                              placeholder="Papasakokite trumpai apie save, savo interesus ar veiklą...">{{ old('bio') }}</textarea>
-                                    @error('bio')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                    <div class="form-text">Maksimaliai 1000 simbolių</div>
-                                </div>
-
                                 <div class="col-md-12 mb-4">
                                     <div class="form-check">
                                         <input class="form-check-input @error('terms') is-invalid @enderror"

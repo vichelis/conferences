@@ -72,13 +72,6 @@
         }
 
 
-        .navbar .btn-logout:disabled {
-            background: rgba(108, 117, 125, 0.5);
-            border-color: rgba(108, 117, 125, 0.3);
-            color: rgba(255, 255, 255, 0.5);
-            cursor: not-allowed;
-        }
-
         .navbar .btn-logout:not(:disabled):hover {
             background: rgba(220, 53, 69, 1);
             border-color: rgba(220, 53, 69, 0.8);
